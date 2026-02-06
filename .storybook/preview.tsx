@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/react-vite'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme, GlobalStyles } from '../src/styles'
 

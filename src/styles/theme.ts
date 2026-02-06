@@ -7,8 +7,19 @@ export const lightTheme = {
     },
     typography: {
         fontFamily: 'Inter',
+        fontWeight: {
+            medium: 500,
+        },
+    },
+    spacing: {
+        sm: '8px',
+        md: '16px',
+    },
+    radii: {
+        md: '8px',
     },
     transitions: {
+        fast: '150ms ease',
         normal: '200ms ease',
     },
 }
@@ -21,6 +32,8 @@ export const darkTheme: typeof lightTheme = {
         primary: '#3b82f6',
     },
     typography: lightTheme.typography,
+    spacing: lightTheme.spacing,
+    radii: lightTheme.radii,
     transitions: lightTheme.transitions,
 }
 
