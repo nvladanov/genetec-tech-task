@@ -19,6 +19,7 @@ export interface Column<T> {
     label: string
     accessor: (row: T) => ReactNode
     rawAccessor?: (row: T) => string | number
+    width?: string
     sortable?: boolean
     filterable?: boolean
     hidden?: boolean

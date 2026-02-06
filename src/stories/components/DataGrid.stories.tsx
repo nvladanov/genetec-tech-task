@@ -16,9 +16,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const columns: Column<Event>[] = [
-    { key: 'title', label: 'Title', accessor: (row) => row.title, sortable: true, filterable: true },
-    { key: 'date', label: 'Date', accessor: (row) => new Date(row.date).toLocaleDateString(), rawAccessor: (row) => new Date(row.date).getTime(), sortable: true },
-    { key: 'description', label: 'Description', accessor: (row) => row.description || '-', filterable: true },
+    { key: 'title', label: 'Title', accessor: (row) => row.title, sortable: true, filterable: true, width: '30%' },
+    { key: 'date', label: 'Date', accessor: (row) => new Date(row.date).toLocaleDateString(), rawAccessor: (row) => new Date(row.date).getTime(), sortable: true, width: '20%' },
+    { key: 'description', label: 'Description', accessor: (row) => row.description || '-', filterable: true, width: '50%' },
     { key: 'id', label: 'ID', accessor: (row) => row.id, hidden: true },
 ]
 

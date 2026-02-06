@@ -3,6 +3,7 @@ export const lightTheme = {
         background: '#ffffff',
         foreground: '#111827',
         border: '#e5e7eb',
+        muted: '#6b7280',
         primary: '#3b82f6',
     },
     typography: {
@@ -29,6 +30,7 @@ export const darkTheme: typeof lightTheme = {
         background: '#0f0f0f',
         foreground: '#fafafa',
         border: '#27272a',
+        muted: '#a1a1aa',
         primary: '#3b82f6',
     },
     typography: lightTheme.typography,
