@@ -2,4 +2,7 @@ node_modules
 dist
 tech_task.pdf
 .DS_Store
+
+*storybook.log
+storybook-static
 tsconfig.tsbuildinfo
