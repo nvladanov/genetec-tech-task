@@ -2,3 +2,4 @@ node_modules
 dist
 tech_task.pdf
 .DS_Store
+tsconfig.tsbuildinfo

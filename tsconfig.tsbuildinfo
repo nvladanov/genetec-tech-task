@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./vite.config.ts"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/styled.d.ts","./src/context/themecontext.ts","./src/context/thememodeprovider.tsx","./src/context/index.ts","./src/context/usethememode.ts","./src/styles/globalstyles.ts","./src/styles/index.ts","./src/styles/theme.ts","./vite.config.ts"],"version":"5.9.3"}
