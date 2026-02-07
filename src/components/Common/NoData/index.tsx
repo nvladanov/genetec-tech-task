@@ -1,6 +1,6 @@
 import { Inbox, SearchX } from 'lucide-react';
 import { useTheme } from 'styled-components';
-import { NoDataType } from '../../types';
+import { NoDataType } from '../../../types';
 import { NoDataContainer, NoDataMessage, NoDataTitle, PrimaryButton } from './styles';
 
 interface NoDataProps {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Timeline } from '../../components/Timeline';
-import { generateMockEvents } from '../../utils';
+
 
 const meta: Meta<typeof Timeline> = {
     title: 'Components/Timeline',
@@ -16,39 +16,27 @@ type Story = StoryObj<typeof Timeline>;
 
 export const Default: Story = {
     args: {
-        events: generateMockEvents(10),
-        autoFocus: true,
-    },
-};
-
-export const ManyEvents: Story = {
-    args: {
-        events: generateMockEvents(50),
-    },
-};
-
-export const Grouped: Story = {
-    args: {
         events: [
             ...Array.from({ length: 5 }).map((_, i) => ({
                 id: `group1-${i}`,
-                title: `Event ${i + 1} - Day 1`,
+                title: `Client Meeting - Project Alpha`,
                 date: new Date('2023-10-01T10:00:00').toISOString(),
-                description: 'Description for event 1',
+                description: 'Discussing Q4 roadmap and deliverables with the client stakeholders.',
             })),
-            ...Array.from({ length: 5 }).map((_, i) => ({
+            ...Array.from({ length: 3 }).map((_, i) => ({
                 id: `group2-${i}`,
-                title: `Event ${i + 1} - Day 2`,
+                title: `Team Sync - Design Review`,
                 date: new Date('2023-10-02T14:30:00').toISOString(),
-                description: 'Description for event 2',
+                description: 'Reviewing the new dashboard mockups.',
             })),
-            ...Array.from({ length: 5 }).map((_, i) => ({
+            ...Array.from({ length: 4 }).map((_, i) => ({
                 id: `group3-${i}`,
-                title: `Event ${i + 1} - Day 3`,
+                title: `Code Deployment`,
                 date: new Date('2023-10-03T09:15:00').toISOString(),
-                description: 'Description for event 3',
+                description: ' deploying version 2.4.0 to production environment.',
             })),
         ],
+        autoFocus: true,
     },
 };
 
@@ -57,3 +45,4 @@ export const Empty: Story = {
         events: [],
     },
 };
+

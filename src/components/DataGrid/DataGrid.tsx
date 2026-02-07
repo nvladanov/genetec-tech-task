@@ -5,7 +5,7 @@ import { DataGridHeader } from './DataGridHeader';
 import { DataGridSkeleton } from './DataGridSkeleton';
 import { NoDataType } from '../../types';
 import { ErrorState } from './ErrorState';
-import { NoData } from './NoData';
+import { NoData } from '../Common/NoData';
 import { Pagination } from './Pagination';
 
 interface DataGridProps<T> {
