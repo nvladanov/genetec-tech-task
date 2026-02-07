@@ -1,8 +1,10 @@
 import type { Column } from '../../types'
-import { StateContainer, Table, TableContainer, Tbody, Td, Tr } from './styles'
+import { Table, TableContainer, Tbody, Td, Tr } from './styles'
 import { useDataGrid } from './useDataGrid'
 import { DataGridHeader } from './DataGridHeader'
 import { DataGridSkeleton } from './DataGridSkeleton'
+import { ErrorState } from './ErrorState'
+import { NoData } from './NoData'
 import { Pagination } from './Pagination'
 
 interface DataGridProps<T> {
@@ -22,6 +24,7 @@ export const DataGrid = <T,>({
     isLoading = false,
     error = null,
 }: DataGridProps<T>) => {
+
     const {
         paginatedData,
         sortConfig,
@@ -29,6 +32,7 @@ export const DataGrid = <T,>({
         pagination,
         handleSort,
         handleFilter,
+        clearAllFilters,
     } = useDataGrid({
         data,
         columns,
@@ -38,9 +42,7 @@ export const DataGrid = <T,>({
     if (error) {
         return (
             <TableContainer>
-                <StateContainer style={{ color: 'red' }}>
-                    Error: {error}
-                </StateContainer>
+                <ErrorState message={error} />
             </TableContainer>
         )
     }
@@ -62,7 +64,10 @@ export const DataGrid = <T,>({
                         ) : paginatedData.length === 0 ? (
                             <Tr>
                                 <Td colSpan={columns.filter(c => !c.hidden).length}>
-                                    <StateContainer>No data found.</StateContainer>
+                                    <NoData
+                                        type={Object.keys(filters).length > 0 ? 'filtered' : 'empty'}
+                                        onClear={clearAllFilters}
+                                    />
                                 </Td>
                             </Tr>
                         ) : (

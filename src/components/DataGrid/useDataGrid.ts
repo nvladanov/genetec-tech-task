@@ -21,6 +21,7 @@ interface UseDataGridReturn<T> {
     }
     handleSort: (key: keyof T) => void
     handleFilter: (key: keyof T, value: string) => void
+    clearAllFilters: () => void
 }
 
 export const useDataGrid = <T,>({
@@ -112,6 +113,11 @@ export const useDataGrid = <T,>({
         setPage(1)
     }
 
+    const clearAllFilters = () => {
+        setFilters({})
+        setPage(1)
+    }
+
     return {
         paginatedData,
         sortConfig,
@@ -126,5 +132,6 @@ export const useDataGrid = <T,>({
         },
         handleSort,
         handleFilter,
+        clearAllFilters,
     }
 }
