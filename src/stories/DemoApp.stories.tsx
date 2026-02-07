@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { DemoApp } from './index';
+import { DemoApp } from '../components/DemoApp';
 
 const meta: Meta<typeof DemoApp> = {
     title: 'App/Demo App',

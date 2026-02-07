@@ -27,16 +27,16 @@ export const DemoContent = styled.div`
     }
 `;
 
-export const Panel = styled.div<{ $noBorder?: boolean }>`
+export const Panel = styled.div<{ $noBorder?: boolean; $padding?: string }>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing.md};
     overflow: hidden;
     height: 100%;
     background: ${({ theme }) => theme.colors.background};
-    border-radius: ${({ theme }) => theme.radii.lg};
+    border-radius: ${({ theme }) => theme.radii.md};
     border: ${({ $noBorder, theme }) => ($noBorder ? 'none' : `1px solid ${theme.colors.border}`)};
-    padding: ${({ theme }) => theme.spacing.md};
+    padding: ${({ $padding, theme }) => $padding || theme.spacing.md};
 `;
 
 export const PanelTitle = styled.h2`

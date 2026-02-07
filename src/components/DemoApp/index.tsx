@@ -25,9 +25,9 @@ export const DemoApp = () => {
                 label: t('eventForm.labels.date'),
                 sortable: true,
                 accessor: (row: Event) => new Date(row.date).toLocaleString(),
-                width: '20%',
+                width: '15%',
             },
-            { key: 'description' as const, label: t('eventForm.labels.description'), width: '50%' },
+            { key: 'description' as const, label: t('eventForm.labels.description'), width: '55%' },
         ],
         [t]
     );
@@ -55,13 +55,13 @@ export const DemoApp = () => {
             </DemoHeader>
 
             <DemoContent>
-                <Panel $noBorder>
+                <Panel $noBorder $padding="0">
                     <PanelTitle>{t('demo.allEvents', { count: events.length })}</PanelTitle>
                     <DataGrid<Event>
                         data={events}
                         columns={columns}
                         rowKey="id"
-                        initialPageSize={10}
+                        initialPageSize={20}
                     />
                 </Panel>
 

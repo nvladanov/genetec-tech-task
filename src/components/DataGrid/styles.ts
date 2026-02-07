@@ -2,10 +2,18 @@ import styled, { keyframes } from 'styled-components';
 
 export const TableContainer = styled.div`
     width: 100%;
-    overflow-x: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     border: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: ${({ theme }) => theme.radii.md};
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+`;
+
+export const TableWrapper = styled.div`
+    flex: 1;
+    overflow: auto;
 `;
 
 export const Table = styled.table`

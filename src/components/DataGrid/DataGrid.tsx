@@ -1,5 +1,5 @@
 import type { Column } from '../../types';
-import { Table, TableContainer, Tbody, Td, Tr } from './styles';
+import { Table, TableContainer, TableWrapper, Tbody, Td, Tr } from './styles';
 import { useDataGrid } from './useDataGrid';
 import { DataGridHeader } from './DataGridHeader';
 import { DataGridSkeleton } from './DataGridSkeleton';
@@ -41,7 +41,7 @@ export const DataGrid = <T,>({
 
     return (
         <TableContainer>
-            <div style={{ overflowX: 'auto' }}>
+            <TableWrapper>
                 <Table>
                     <DataGridHeader
                         columns={columns}
@@ -80,7 +80,7 @@ export const DataGrid = <T,>({
                         )}
                     </Tbody>
                 </Table>
-            </div>
+            </TableWrapper>
             {!isLoading && paginatedData.length > 0 && (
                 <Pagination
                     page={pagination.page}
