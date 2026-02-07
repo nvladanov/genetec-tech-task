@@ -57,5 +57,12 @@
             "success": "Ereignis erfolgreich gespeichert!",
             "error": "Fehler beim Speichern des Ereignisses. Bitte versuchen Sie es erneut."
         }
+    },
+    "demo": {
+        "title": "Event-Management-Demo",
+        "newEvent": "Neues Ereignis",
+        "allEvents": "Alle Ereignisse ({{count}})",
+        "timeline": "Zeitachse",
+        "listCaption": "Liste aller Ereignisse"
     }
 }

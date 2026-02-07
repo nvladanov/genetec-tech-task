@@ -13,7 +13,7 @@ export interface SortConfig {
 export interface Column<T> {
     key: keyof T;
     label: string;
-    accessor: (row: T) => ReactNode;
+    accessor?: (row: T) => ReactNode;
     rawAccessor?: (row: T) => string | number;
     width?: string;
     sortable?: boolean;

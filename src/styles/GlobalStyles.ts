@@ -9,6 +9,10 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  input, button, textarea, select {
+    font: inherit;
+  }
+
   html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;

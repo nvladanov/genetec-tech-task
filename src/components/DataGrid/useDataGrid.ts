@@ -37,7 +37,7 @@ export const useDataGrid = <T>({ data, columns, initialPageSize = 10 }: UseDataG
                 const column = columns.find((col) => col.key === key);
                 if (!column) return true;
 
-                const cellValue = column.accessor(row);
+                const cellValue = column.accessor ? column.accessor(row) : (row[key as keyof T] as React.ReactNode);
                 return String(cellValue).toLowerCase().includes(value.toLowerCase());
             });
         });
@@ -54,7 +54,7 @@ export const useDataGrid = <T>({ data, columns, initialPageSize = 10 }: UseDataG
                 if (column.rawAccessor) {
                     return column.rawAccessor(row);
                 }
-                const value = column.accessor(row);
+                const value = column.accessor ? column.accessor(row) : (row[column.key] as React.ReactNode);
                 return typeof value === 'string' || typeof value === 'number' ? value : String(value);
             };
 

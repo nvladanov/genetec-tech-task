@@ -57,5 +57,12 @@
             "success": "Événement enregistré avec succès !",
             "error": "Échec de l'enregistrement de l'événement. Veuillez réessayer."
         }
+    },
+    "demo": {
+        "title": "Démo de Gestion d'Événements",
+        "newEvent": "Nouvel Événement",
+        "allEvents": "Tous les Événements ({{count}})",
+        "timeline": "Chronologie",
+        "listCaption": "Liste de tous les événements"
     }
 }

@@ -69,7 +69,9 @@ export const DataGrid = <T,>({
                                         if (column.hidden) return null;
                                         return (
                                             <Td key={`${String(row[rowKey])}-${column.key as string}`}>
-                                                {column.accessor(row)}
+                                                {column.accessor
+                                                    ? column.accessor(row)
+                                                    : (row[column.key] as React.ReactNode)}
                                             </Td>
                                         );
                                     })}

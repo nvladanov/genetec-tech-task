@@ -57,5 +57,12 @@
             "success": "Event saved successfully!",
             "error": "Failed to save event. Please try again."
         }
+    },
+    "demo": {
+        "title": "Event Management Demo",
+        "newEvent": "New Event",
+        "allEvents": "All Events ({{count}})",
+        "timeline": "Timeline",
+        "listCaption": "List of all events"
     }
 }
