@@ -83,7 +83,7 @@ export const PrimaryButton = styled.button`
 `;
 
 export const Thead = styled.thead`
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.muted}08;
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
@@ -103,6 +103,14 @@ export const Tbody = styled.tbody`
 export const Tr = styled.tr`
     transition: background-color ${({ theme }) => theme.transitions.fast};
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+
+    &:nth-child(even) {
+        background-color: ${({ theme }) => theme.colors.muted}08;
+    }
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.muted}20;
+    }
 
     &:last-child {
         border-bottom: none;

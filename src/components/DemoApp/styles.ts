@@ -27,7 +27,7 @@ export const DemoContent = styled.div`
     }
 `;
 
-export const Panel = styled.div`
+export const Panel = styled.div<{ $noBorder?: boolean }>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing.md};
@@ -35,7 +35,7 @@ export const Panel = styled.div`
     height: 100%;
     background: ${({ theme }) => theme.colors.background};
     border-radius: ${({ theme }) => theme.radii.lg};
-    border: 1px solid ${({ theme }) => theme.colors.border};
+    border: ${({ $noBorder, theme }) => ($noBorder ? 'none' : `1px solid ${theme.colors.border}`)};
     padding: ${({ theme }) => theme.spacing.md};
 `;
 

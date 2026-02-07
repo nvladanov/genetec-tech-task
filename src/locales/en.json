@@ -19,7 +19,7 @@
             "lastPage": "Last Page"
         },
         "error": {
-            "title": "Une erreur est survenue",
+            "title": "An error occurred",
             "defaultMessage": "Something went wrong while loading data."
         }
     },

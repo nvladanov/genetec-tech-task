@@ -102,6 +102,7 @@ export const Button = styled.button<{ $variant?: 'primary' | 'secondary'; disabl
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: ${({ theme }) => theme.spacing.sm};
     padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.lg}`};
     border-radius: ${({ theme }) => theme.radii.md};
     font-size: ${({ theme }) => theme.typography.fontSize.sm};

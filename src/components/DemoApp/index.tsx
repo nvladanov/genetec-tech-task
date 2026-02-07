@@ -55,7 +55,7 @@ export const DemoApp = () => {
             </DemoHeader>
 
             <DemoContent>
-                <Panel>
+                <Panel $noBorder>
                     <PanelTitle>{t('demo.allEvents', { count: events.length })}</PanelTitle>
                     <DataGrid<Event>
                         data={events}

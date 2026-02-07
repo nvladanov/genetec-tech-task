@@ -55,7 +55,11 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
 
             <PaginationRightSide>
                 <PaginationInfo>{t('datagrid.pagination.rowsPerPage')}</PaginationInfo>
-                <PageSelect value={pageSize} onChange={handlePageSizeChange}>
+                <PageSelect
+                    value={pageSize}
+                    onChange={handlePageSizeChange}
+                    aria-label={t('datagrid.pagination.rowsPerPage')}
+                >
                     <option value={5}>5</option>
                     <option value={10}>10</option>
                     <option value={20}>20</option>
