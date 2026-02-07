@@ -5,6 +5,7 @@ export const lightTheme = {
         border: '#e5e7eb',
         muted: '#6b7280',
         primary: '#3b82f6',
+        white: '#ffffff',
     },
     typography: {
         fontFamily: 'Inter',
@@ -32,6 +33,7 @@ export const darkTheme: typeof lightTheme = {
         border: '#27272a',
         muted: '#a1a1aa',
         primary: '#3b82f6',
+        white: '#ffffff',
     },
     typography: lightTheme.typography,
     spacing: lightTheme.spacing,

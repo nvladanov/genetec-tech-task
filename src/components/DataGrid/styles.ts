@@ -90,31 +90,57 @@ export const PaginationContainer = styled.nav`
   background-color: ${({ theme }) => theme.colors.background};
 `
 
-export const PageButton = styled.button`
+export const PageButton = styled.button<{ $active?: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.md}`};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  padding: ${({ theme }) => theme.spacing.sm};
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.border)};
   border-radius: ${({ theme }) => theme.radii.md};
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.foreground};
+  background-color: ${({ theme, $active }) => ($active ? theme.colors.primary : theme.colors.background)};
+  color: ${({ theme, $active }) => ($active ? theme.colors.white : theme.colors.foreground)};
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: all ${({ theme }) => theme.transitions.fast};
+  margin-left: 4px;
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     background-color: ${({ theme }) => theme.colors.border}20;
+    border-color: ${({ theme }) => theme.colors.border};
   }
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.colors.primary}10;
+    background-color: ${({ theme, $active }) => ($active ? theme.colors.primary : `${theme.colors.border}33`)};
     border-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme, $active }) => ($active ? theme.colors.white : theme.colors.primary)};
   }
+`
+
+export const PageSelect = styled.select`
+  padding: 4px 8px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.radii.md};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.foreground};
+  font-size: 0.875rem;
+  margin-left: 8px;
+  margin-right: 16px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
+`
+
+export const PaginationInfo = styled.span`
+  color: ${({ theme }) => theme.colors.muted};
+  font-size: 0.875rem;
 `
 
 export const StateContainer = styled.div`
@@ -209,4 +235,25 @@ export const ClearFilterButton = styled.button`
   &:hover {
     color: ${({ theme }) => theme.colors.foreground};
   }
+`
+
+export const PaginationRightSide = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const PaginationControls = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const PaginationEllipsis = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: ${({ theme }) => theme.colors.foreground};
+  font-size: 0.875rem;
+  margin-left: 4px;
 `
