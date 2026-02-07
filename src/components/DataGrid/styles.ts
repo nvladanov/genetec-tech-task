@@ -257,3 +257,27 @@ export const PaginationEllipsis = styled.span`
   font-size: 0.875rem;
   margin-left: 4px;
 `
+
+import { keyframes } from 'styled-components'
+
+const shimmer = keyframes`
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+`
+
+export const SkeletonBox = styled.div`
+  background: linear-gradient(90deg, 
+    ${({ theme }) => theme.colors.border}20 25%, 
+    ${({ theme }) => theme.colors.border}40 37%, 
+    ${({ theme }) => theme.colors.border}20 63%
+  );
+  background-size: 400% 100%;
+  animation: ${shimmer} 1.4s ease infinite;
+  border-radius: ${({ theme }) => theme.radii.md};
+  height: 20px;
+  width: 100%;
+`

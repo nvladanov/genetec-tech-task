@@ -1,7 +1,8 @@
 import type { Column } from '../../types'
-import { Table, TableContainer, Tbody, Td, Tr, StateContainer } from './styles'
+import { StateContainer, Table, TableContainer, Tbody, Td, Tr } from './styles'
 import { useDataGrid } from './useDataGrid'
 import { DataGridHeader } from './DataGridHeader'
+import { DataGridSkeleton } from './DataGridSkeleton'
 import { Pagination } from './Pagination'
 
 interface DataGridProps<T> {
@@ -57,11 +58,7 @@ export const DataGrid = <T,>({
                     />
                     <Tbody>
                         {isLoading ? (
-                            <Tr>
-                                <Td colSpan={columns.filter(c => !c.hidden).length}>
-                                    <StateContainer>Loading data...</StateContainer>
-                                </Td>
-                            </Tr>
+                            <DataGridSkeleton columns={columns} rowCount={initialPageSize} />
                         ) : paginatedData.length === 0 ? (
                             <Tr>
                                 <Td colSpan={columns.filter(c => !c.hidden).length}>
