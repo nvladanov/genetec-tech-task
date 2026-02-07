@@ -25,7 +25,7 @@ export const lightTheme = {
         fast: '150ms ease',
         normal: '200ms ease',
     },
-}
+};
 
 export const darkTheme: typeof lightTheme = {
     colors: {
@@ -41,6 +41,6 @@ export const darkTheme: typeof lightTheme = {
     spacing: lightTheme.spacing,
     radii: lightTheme.radii,
     transitions: lightTheme.transitions,
-}
+};
 
-export type Theme = typeof lightTheme
+export type Theme = typeof lightTheme;

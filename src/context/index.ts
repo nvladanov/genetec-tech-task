@@ -1,2 +1,2 @@
-export { ThemeModeProvider } from './ThemeModeProvider'
-export { useThemeMode } from './useThemeMode'
+export { ThemeModeProvider } from './ThemeModeProvider';
+export { useThemeMode } from './useThemeMode';

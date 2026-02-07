@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -23,4 +23,4 @@ export const GlobalStyles = createGlobalStyle`
     transition: background-color ${({ theme }) => theme.transitions.normal},
                 color ${({ theme }) => theme.transitions.normal};
   }
-`
+`;

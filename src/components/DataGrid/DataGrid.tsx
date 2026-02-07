@@ -1,20 +1,20 @@
-import type { Column } from '../../types'
-import { Table, TableContainer, Tbody, Td, Tr } from './styles'
-import { useDataGrid } from './useDataGrid'
-import { DataGridHeader } from './DataGridHeader'
-import { DataGridSkeleton } from './DataGridSkeleton'
-import { NoDataType } from '../../types'
-import { ErrorState } from './ErrorState'
-import { NoData } from './NoData'
-import { Pagination } from './Pagination'
+import type { Column } from '../../types';
+import { Table, TableContainer, Tbody, Td, Tr } from './styles';
+import { useDataGrid } from './useDataGrid';
+import { DataGridHeader } from './DataGridHeader';
+import { DataGridSkeleton } from './DataGridSkeleton';
+import { NoDataType } from '../../types';
+import { ErrorState } from './ErrorState';
+import { NoData } from './NoData';
+import { Pagination } from './Pagination';
 
 interface DataGridProps<T> {
-    data: T[]
-    columns: Column<T>[]
-    rowKey: keyof T
-    initialPageSize?: number
-    isLoading?: boolean
-    error?: string | null
+    data: T[];
+    columns: Column<T>[];
+    rowKey: keyof T;
+    initialPageSize?: number;
+    isLoading?: boolean;
+    error?: string | null;
 }
 
 export const DataGrid = <T,>({
@@ -25,27 +25,18 @@ export const DataGrid = <T,>({
     isLoading = false,
     error = null,
 }: DataGridProps<T>) => {
-
-    const {
-        paginatedData,
-        sortConfig,
-        filters,
-        pagination,
-        handleSort,
-        handleFilter,
-        clearAllFilters,
-    } = useDataGrid({
+    const { paginatedData, sortConfig, filters, pagination, handleSort, handleFilter, clearAllFilters } = useDataGrid({
         data,
         columns,
         initialPageSize,
-    })
+    });
 
     if (error) {
         return (
             <TableContainer>
                 <ErrorState message={error} />
             </TableContainer>
-        )
+        );
     }
 
     return (
@@ -64,7 +55,7 @@ export const DataGrid = <T,>({
                             <DataGridSkeleton columns={columns} rowCount={initialPageSize} />
                         ) : paginatedData.length === 0 ? (
                             <Tr>
-                                <Td colSpan={columns.filter(c => !c.hidden).length}>
+                                <Td colSpan={columns.filter((c) => !c.hidden).length}>
                                     <NoData
                                         type={Object.keys(filters).length > 0 ? NoDataType.FILTERED : NoDataType.EMPTY}
                                         onClear={clearAllFilters}
@@ -75,12 +66,12 @@ export const DataGrid = <T,>({
                             paginatedData.map((row) => (
                                 <Tr key={String(row[rowKey])}>
                                     {columns.map((column) => {
-                                        if (column.hidden) return null
+                                        if (column.hidden) return null;
                                         return (
                                             <Td key={`${String(row[rowKey])}-${column.key as string}`}>
                                                 {column.accessor(row)}
                                             </Td>
-                                        )
+                                        );
                                     })}
                                 </Tr>
                             ))
@@ -99,5 +90,5 @@ export const DataGrid = <T,>({
                 />
             )}
         </TableContainer>
-    )
-}
+    );
+};
