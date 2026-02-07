@@ -10,7 +10,6 @@ export const generateMockEvents = (count: number): Event[] => {
         events.push({
             id: faker.string.uuid(),
             title: faker.company.catchPhrase(),
-            // Generate dates within the last 7 days to ensure grouping
             date: faker.date.recent({ days: 7 }).toISOString(),
             description: faker.lorem.sentence(),
         });

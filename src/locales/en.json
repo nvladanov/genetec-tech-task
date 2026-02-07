@@ -1,0 +1,61 @@
+{
+    "common": {
+        "noData": {
+            "emptyTitle": "No Data Available",
+            "emptyMessage": "There are no records to display at this time.",
+            "filteredTitle": "No Results Found",
+            "filteredMessage": "No records match your current filters. Try adjusting them or clear all filters.",
+            "clearFilters": "Clear All Filters"
+        }
+    },
+    "datagrid": {
+        "pagination": {
+            "pageInfo": "Page {{current}} of {{total}}",
+            "rowInfo": "Showing {{start}} - {{end}} of {{total}} results",
+            "rowsPerPage": "Rows per page:",
+            "firstPage": "First Page",
+            "prevPage": "Previous Page",
+            "nextPage": "Next Page",
+            "lastPage": "Last Page"
+        },
+        "error": {
+            "title": "Une erreur est survenue",
+            "defaultMessage": "Something went wrong while loading data."
+        }
+    },
+    "timeline": {
+        "ariaLabel": "Timeline of events"
+    },
+    "eventForm": {
+        "title": {
+            "add": "Add New Event",
+            "edit": "Edit Event",
+            "description_add": "create a new",
+            "description_edit": "update the",
+            "description": "Fill in the details below to {{action}} event."
+        },
+        "labels": {
+            "title": "Title",
+            "date": "Date",
+            "description": "Description"
+        },
+        "placeholders": {
+            "title": "e.g. Client Meeting",
+            "description": "Enter event details..."
+        },
+        "buttons": {
+            "cancel": "Cancel",
+            "save": "Save Event",
+            "saving": "Saving..."
+        },
+        "validation": {
+            "titleRequired": "Title is required",
+            "dateRequired": "Date is required",
+            "invalidDate": "Invalid date format"
+        },
+        "feedback": {
+            "success": "Event saved successfully!",
+            "error": "Failed to save event. Please try again."
+        }
+    }
+}

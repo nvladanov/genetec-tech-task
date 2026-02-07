@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useEventForm, type EventFormValues, SubmitStatus } from './useEventForm';
 import {
     Button,
@@ -24,6 +25,7 @@ interface EventFormProps {
 }
 
 export const EventForm = ({ initialValues, onSubmit, onCancel }: EventFormProps) => {
+    const { t } = useTranslation();
     const { values, errors, status, handleChange, handleSubmit, reset } = useEventForm({
         initialValues,
         onSubmit,
@@ -49,29 +51,33 @@ export const EventForm = ({ initialValues, onSubmit, onCancel }: EventFormProps)
         <FormContainer onSubmit={handleSubmit} noValidate aria-labelledby="form-title">
             <FormHeader>
                 <FormTitle id="form-title">
-                    {initialValues ? 'Edit Event' : 'Add New Event'}
+                    {initialValues ? t('eventForm.title.edit') : t('eventForm.title.add')}
                 </FormTitle>
                 <FormDescription>
-                    Fill in the details below to {initialValues ? 'update the' : 'create a new'} event.
+                    {t('eventForm.title.description', {
+                        action: initialValues
+                            ? t('eventForm.title.description_edit')
+                            : t('eventForm.title.description_add'),
+                    })}
                 </FormDescription>
             </FormHeader>
 
             {status === SubmitStatus.SUCCESS && (
                 <SuccessMessage role="alert">
                     <CheckCircle size={20} />
-                    <span>Event saved successfully!</span>
+                    <span>{t('eventForm.feedback.success')}</span>
                 </SuccessMessage>
             )}
 
             {status === SubmitStatus.ERROR && (
                 <FormErrorSummary role="alert">
                     <AlertCircle size={20} />
-                    <span>Failed to save event. Please try again.</span>
+                    <span>{t('eventForm.feedback.error')}</span>
                 </FormErrorSummary>
             )}
 
             <FormGroup>
-                <Label htmlFor="title">Title *</Label>
+                <Label htmlFor="title">{t('eventForm.labels.title')} *</Label>
                 <Input
                     ref={titleRef}
                     id="title"
@@ -79,7 +85,7 @@ export const EventForm = ({ initialValues, onSubmit, onCancel }: EventFormProps)
                     type="text"
                     value={values.title}
                     onChange={(e) => handleChange('title', e.target.value)}
-                    placeholder="e.g. Client Meeting"
+                    placeholder={t('eventForm.placeholders.title')}
                     $hasError={!!errors.title}
                     aria-invalid={!!errors.title}
                     aria-describedby={errors.title ? 'title-error' : undefined}
@@ -93,7 +99,7 @@ export const EventForm = ({ initialValues, onSubmit, onCancel }: EventFormProps)
             </FormGroup>
 
             <FormGroup>
-                <Label htmlFor="date">Date *</Label>
+                <Label htmlFor="date">{t('eventForm.labels.date')} *</Label>
                 <Input
                     ref={dateRef}
                     id="date"
@@ -114,14 +120,14 @@ export const EventForm = ({ initialValues, onSubmit, onCancel }: EventFormProps)
             </FormGroup>
 
             <FormGroup>
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description">{t('eventForm.labels.description')}</Label>
                 <TextArea
                     ref={descriptionRef}
                     id="description"
                     name="description"
                     value={values.description}
                     onChange={(e) => handleChange('description', e.target.value)}
-                    placeholder="Enter event details..."
+                    placeholder={t('eventForm.placeholders.description')}
                     disabled={status === SubmitStatus.SUBMITTING}
                 />
             </FormGroup>
@@ -136,14 +142,16 @@ export const EventForm = ({ initialValues, onSubmit, onCancel }: EventFormProps)
                     }}
                     disabled={status === SubmitStatus.SUBMITTING}
                 >
-                    Cancel
+                    {t('eventForm.buttons.cancel')}
                 </Button>
                 <Button
                     type="submit"
                     $variant="primary"
                     disabled={status === SubmitStatus.SUBMITTING}
                 >
-                    {status === SubmitStatus.SUBMITTING ? 'Saving...' : 'Save Event'}
+                    {status === SubmitStatus.SUBMITTING
+                        ? t('eventForm.buttons.saving')
+                        : t('eventForm.buttons.save')}
                 </Button>
             </ButtonGroup>
         </FormContainer>

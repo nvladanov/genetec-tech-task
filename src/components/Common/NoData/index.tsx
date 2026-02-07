@@ -1,5 +1,6 @@
 import { Inbox, SearchX } from 'lucide-react';
 import { useTheme } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { NoDataType } from '../../../types';
 import { NoDataContainer, NoDataMessage, NoDataTitle, PrimaryButton } from './styles';
 
@@ -10,6 +11,7 @@ interface NoDataProps {
 
 export const NoData = ({ type, onClear }: NoDataProps) => {
     const theme = useTheme();
+    const { t } = useTranslation();
 
     return (
         <NoDataContainer>
@@ -21,8 +23,8 @@ export const NoData = ({ type, onClear }: NoDataProps) => {
                         color={theme?.colors?.muted}
                         style={{ marginBottom: '1rem', opacity: 0.5 }}
                     />
-                    <NoDataTitle>No Data Available</NoDataTitle>
-                    <NoDataMessage>There are no records to display at this time.</NoDataMessage>
+                    <NoDataTitle>{t('common.noData.emptyTitle')}</NoDataTitle>
+                    <NoDataMessage>{t('common.noData.emptyMessage')}</NoDataMessage>
                 </>
             ) : (
                 <>
@@ -32,11 +34,13 @@ export const NoData = ({ type, onClear }: NoDataProps) => {
                         color={theme?.colors?.muted}
                         style={{ marginBottom: '1rem', opacity: 0.5 }}
                     />
-                    <NoDataTitle>No Results Found</NoDataTitle>
-                    <NoDataMessage>
-                        No records match your current filters. Try adjusting them or clear all filters.
-                    </NoDataMessage>
-                    {onClear && <PrimaryButton onClick={onClear}>Clear All Filters</PrimaryButton>}
+                    <NoDataTitle>{t('common.noData.filteredTitle')}</NoDataTitle>
+                    <NoDataMessage>{t('common.noData.filteredMessage')}</NoDataMessage>
+                    {onClear && (
+                        <PrimaryButton onClick={onClear}>
+                            {t('common.noData.clearFilters')}
+                        </PrimaryButton>
+                    )}
                 </>
             )}
         </NoDataContainer>

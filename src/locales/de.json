@@ -1,0 +1,61 @@
+{
+    "common": {
+        "noData": {
+            "emptyTitle": "Keine Daten verfügbar",
+            "emptyMessage": "Zurzeit gibt es keine Datensätze zum Anzeigen.",
+            "filteredTitle": "Keine Ergebnisse gefunden",
+            "filteredMessage": "Keine Datensätze entsprechen Ihren Filtern. Versuchen Sie, diese anzupassen oder alle Filter zu löschen.",
+            "clearFilters": "Alle Filter löschen"
+        }
+    },
+    "datagrid": {
+        "pagination": {
+            "pageInfo": "Seite {{current}} von {{total}}",
+            "rowInfo": "Zeige {{start}} - {{end}} von {{total}} Ergebnissen",
+            "rowsPerPage": "Zeilen pro Seite:",
+            "firstPage": "Erste Seite",
+            "prevPage": "Vorherige Seite",
+            "nextPage": "Nächste Seite",
+            "lastPage": "Letzte Seite"
+        },
+        "error": {
+            "title": "Ein Fehler ist aufgetreten",
+            "defaultMessage": "Beim Laden der Daten ist ein Fehler aufgetreten."
+        }
+    },
+    "timeline": {
+        "ariaLabel": "Zeitachse der Ereignisse"
+    },
+    "eventForm": {
+        "title": {
+            "add": "Neues Ereignis hinzufügen",
+            "edit": "Ereignis bearbeiten",
+            "description_add": "ein neues Ereignis zu erstellen",
+            "description_edit": "das Ereignis zu aktualisieren",
+            "description": "Füllen Sie die untenstehenden Details aus, um {{action}}."
+        },
+        "labels": {
+            "title": "Titel",
+            "date": "Datum",
+            "description": "Beschreibung"
+        },
+        "placeholders": {
+            "title": "z.B. Kundengespräch",
+            "description": "Ereignisdetails eingeben..."
+        },
+        "buttons": {
+            "cancel": "Abbrechen",
+            "save": "Ereignis speichern",
+            "saving": "Speichern..."
+        },
+        "validation": {
+            "titleRequired": "Titel ist erforderlich",
+            "dateRequired": "Datum ist erforderlich",
+            "invalidDate": "Ungültiges Datumsformat"
+        },
+        "feedback": {
+            "success": "Ereignis erfolgreich gespeichert!",
+            "error": "Fehler beim Speichern des Ereignisses. Bitte versuchen Sie es erneut."
+        }
+    }
+}

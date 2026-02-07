@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { Event } from '../../types';
 
 interface UseTimelineProps {
@@ -13,6 +14,8 @@ interface UseTimelineReturn {
 }
 
 export const useTimeline = ({ events }: UseTimelineProps): UseTimelineReturn => {
+    const { i18n } = useTranslation();
+
     const groupedEvents = useMemo(() => {
         const sortedEvents = [...events].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -20,7 +23,7 @@ export const useTimeline = ({ events }: UseTimelineProps): UseTimelineReturn => 
 
         sortedEvents.forEach((event) => {
             const dateObj = new Date(event.date);
-            const dateKey = dateObj.toLocaleDateString(undefined, {
+            const dateKey = dateObj.toLocaleDateString(i18n.language, {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',
@@ -37,7 +40,7 @@ export const useTimeline = ({ events }: UseTimelineProps): UseTimelineReturn => 
             date,
             events: groupEvents,
         }));
-    }, [events]);
+    }, [events, i18n.language]);
 
     return {
         groupedEvents,

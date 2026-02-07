@@ -1,4 +1,5 @@
 import { useState, useCallback, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface EventFormValues {
     title: string;
@@ -24,6 +25,7 @@ interface UseEventFormProps {
 }
 
 export const useEventForm = ({ initialValues, onSubmit }: UseEventFormProps) => {
+    const { t } = useTranslation();
     const [values, setValues] = useState<EventFormValues>(
         initialValues || {
             title: '',
@@ -34,24 +36,27 @@ export const useEventForm = ({ initialValues, onSubmit }: UseEventFormProps) => 
     const [errors, setErrors] = useState<EventFormErrors>({});
     const [status, setStatus] = useState<SubmitStatus>(SubmitStatus.IDLE);
 
-    const validate = useCallback((values: EventFormValues): EventFormErrors => {
-        const newErrors: EventFormErrors = {};
+    const validate = useCallback(
+        (values: EventFormValues): EventFormErrors => {
+            const newErrors: EventFormErrors = {};
 
-        if (!values.title.trim()) {
-            newErrors.title = 'Title is required';
-        }
-
-        if (!values.date) {
-            newErrors.date = 'Date is required';
-        } else {
-            const date = new Date(values.date);
-            if (isNaN(date.getTime())) {
-                newErrors.date = 'Invalid date format';
+            if (!values.title.trim()) {
+                newErrors.title = t('eventForm.validation.titleRequired');
             }
-        }
 
-        return newErrors;
-    }, []);
+            if (!values.date) {
+                newErrors.date = t('eventForm.validation.dateRequired');
+            } else {
+                const date = new Date(values.date);
+                if (isNaN(date.getTime())) {
+                    newErrors.date = t('eventForm.validation.invalidDate');
+                }
+            }
+
+            return newErrors;
+        },
+        [t]
+    );
 
     const handleChange = useCallback((field: keyof EventFormValues, value: string) => {
         setValues((prev) => ({ ...prev, [field]: value }));

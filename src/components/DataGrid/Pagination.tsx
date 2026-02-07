@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
 import type { ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
     PageButton,
     PageSelect,
@@ -20,6 +21,8 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, onPageSizeChange }: PaginationProps) => {
+    const { t } = useTranslation();
+
     const handlePageSizeChange = (e: ChangeEvent<HTMLSelectElement>) => {
         onPageSizeChange(Number(e.target.value));
     };
@@ -43,12 +46,15 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
     return (
         <PaginationContainer>
             <PaginationInfo>
-                Showing {total === 0 ? 0 : (page - 1) * pageSize + 1} - {Math.min(page * pageSize, total)} of {total}{' '}
-                results
+                {t('datagrid.pagination.rowInfo', {
+                    start: total === 0 ? 0 : (page - 1) * pageSize + 1,
+                    end: Math.min(page * pageSize, total),
+                    total,
+                })}
             </PaginationInfo>
 
             <PaginationRightSide>
-                <PaginationInfo>Rows per page:</PaginationInfo>
+                <PaginationInfo>{t('datagrid.pagination.rowsPerPage')}</PaginationInfo>
                 <PageSelect value={pageSize} onChange={handlePageSizeChange}>
                     <option value={5}>5</option>
                     <option value={10}>10</option>
@@ -57,10 +63,18 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
                 </PageSelect>
 
                 <PaginationControls>
-                    <PageButton onClick={() => onPageChange(1)} disabled={page === 1} title="First Page">
+                    <PageButton
+                        onClick={() => onPageChange(1)}
+                        disabled={page === 1}
+                        title={t('datagrid.pagination.firstPage')}
+                    >
                         <ChevronsLeft size={16} />
                     </PageButton>
-                    <PageButton onClick={() => onPageChange(page - 1)} disabled={page === 1} title="Previous Page">
+                    <PageButton
+                        onClick={() => onPageChange(page - 1)}
+                        disabled={page === 1}
+                        title={t('datagrid.pagination.prevPage')}
+                    >
                         <ChevronLeft size={16} />
                     </PageButton>
 
@@ -77,14 +91,14 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
                     <PageButton
                         onClick={() => onPageChange(page + 1)}
                         disabled={page === totalPages || totalPages === 0}
-                        title="Next Page"
+                        title={t('datagrid.pagination.nextPage')}
                     >
                         <ChevronRight size={16} />
                     </PageButton>
                     <PageButton
                         onClick={() => onPageChange(totalPages)}
                         disabled={page === totalPages || totalPages === 0}
-                        title="Last Page"
+                        title={t('datagrid.pagination.lastPage')}
                     >
                         <ChevronsRight size={16} />
                     </PageButton>

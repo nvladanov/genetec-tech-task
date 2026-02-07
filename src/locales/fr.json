@@ -1,0 +1,61 @@
+{
+    "common": {
+        "noData": {
+            "emptyTitle": "Données non disponibles",
+            "emptyMessage": "Il n'y a aucun enregistrement à afficher pour le moment.",
+            "filteredTitle": "Aucun résultat trouvé",
+            "filteredMessage": "Aucun enregistrement ne correspond à vos filtres. Essayez de les ajuster ou d'effacer tous les filtres.",
+            "clearFilters": "Effacer tous les filtres"
+        }
+    },
+    "datagrid": {
+        "pagination": {
+            "pageInfo": "Page {{current}} sur {{total}}",
+            "rowInfo": "Affichage de {{start}} à {{end}} sur {{total}} résultats",
+            "rowsPerPage": "Lignes par page :",
+            "firstPage": "Première page",
+            "prevPage": "Page précédente",
+            "nextPage": "Page suivante",
+            "lastPage": "Dernière page"
+        },
+        "error": {
+            "title": "Une erreur est survenue",
+            "defaultMessage": "Une erreur s'est produite lors du chargement des données."
+        }
+    },
+    "timeline": {
+        "ariaLabel": "Chronologie des événements"
+    },
+    "eventForm": {
+        "title": {
+            "add": "Ajouter un événement",
+            "edit": "Modifier l'événement",
+            "description_add": "créer un nouvel",
+            "description_edit": "mettre à jour l'",
+            "description": "Remplissez les détails ci-dessous pour {{action}} événement."
+        },
+        "labels": {
+            "title": "Titre",
+            "date": "Date",
+            "description": "Description"
+        },
+        "placeholders": {
+            "title": "ex: Réunion client",
+            "description": "Entrez les détails de l'événement..."
+        },
+        "buttons": {
+            "cancel": "Annuler",
+            "save": "Enregistrer",
+            "saving": "Enregistrement..."
+        },
+        "validation": {
+            "titleRequired": "Le titre est requis",
+            "dateRequired": "La date est requise",
+            "invalidDate": "Format de date invalide"
+        },
+        "feedback": {
+            "success": "Événement enregistré avec succès !",
+            "error": "Échec de l'enregistrement de l'événement. Veuillez réessayer."
+        }
+    }
+}
