@@ -3,6 +3,7 @@ import { Table, TableContainer, Tbody, Td, Tr } from './styles'
 import { useDataGrid } from './useDataGrid'
 import { DataGridHeader } from './DataGridHeader'
 import { DataGridSkeleton } from './DataGridSkeleton'
+import { NoDataType } from '../../types'
 import { ErrorState } from './ErrorState'
 import { NoData } from './NoData'
 import { Pagination } from './Pagination'
@@ -65,7 +66,7 @@ export const DataGrid = <T,>({
                             <Tr>
                                 <Td colSpan={columns.filter(c => !c.hidden).length}>
                                     <NoData
-                                        type={Object.keys(filters).length > 0 ? 'filtered' : 'empty'}
+                                        type={Object.keys(filters).length > 0 ? NoDataType.FILTERED : NoDataType.EMPTY}
                                         onClear={clearAllFilters}
                                     />
                                 </Td>

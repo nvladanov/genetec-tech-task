@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import type { Column, SortConfig } from '../../types'
+import { type Column, type SortConfig, SortDirection } from '../../types'
 
 interface UseDataGridProps<T> {
     data: T[]
@@ -68,12 +68,12 @@ export const useDataGrid = <T,>({
             if (valA === valB) return 0
 
             if (typeof valA === 'number' && typeof valB === 'number') {
-                return sortConfig.direction === 'asc' ? valA - valB : valB - valA
+                return sortConfig.direction === SortDirection.ASC ? valA - valB : valB - valA
             }
 
             const comparison = String(valA).localeCompare(String(valB), undefined, { numeric: true })
 
-            return sortConfig.direction === 'asc' ? comparison : -comparison
+            return sortConfig.direction === SortDirection.ASC ? comparison : -comparison
         })
     }, [filteredData, sortConfig, columns])
 
@@ -95,13 +95,13 @@ export const useDataGrid = <T,>({
 
     const handleSort = (key: keyof T) => {
         setSortConfig((prev) => {
-            if (prev?.key === key && prev.direction === 'asc') {
-                return { key: String(key), direction: 'desc' }
+            if (prev?.key === key && prev.direction === SortDirection.ASC) {
+                return { key: String(key), direction: SortDirection.DESC }
             }
-            if (prev?.key === key && prev.direction === 'desc') {
+            if (prev?.key === key && prev.direction === SortDirection.DESC) {
                 return null
             }
-            return { key: String(key), direction: 'asc' }
+            return { key: String(key), direction: SortDirection.ASC }
         })
     }
 

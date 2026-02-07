@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowUp, ArrowUpDown, Filter, Search, X } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import { useTheme } from 'styled-components'
-import type { Column, SortConfig } from '../../types'
+import { type Column, type SortConfig, SortDirection } from '../../types'
 import {
     ClearFilterButton,
     FilterButton,
@@ -67,15 +67,15 @@ export const DataGridHeader = <T,>({
                     const hasFilterValue = !!filters[String(column.key)]
 
                     return (
-                        <Th key={String(column.key)} width={column.width} aria-sort={isSorted ? (direction === 'asc' ? 'ascending' : 'descending') : 'none'}>
+                        <Th key={String(column.key)} width={column.width} aria-sort={isSorted ? (direction === SortDirection.ASC ? 'ascending' : 'descending') : 'none'}>
                             <ThContent onClick={() => column.sortable && onSort(column.key)}>
                                 <HeaderLabelContainer>
                                     <span>{column.label}</span>
                                     {column.sortable && (
                                         <SortIconContainer>
-                                            {direction === 'asc' ? (
+                                            {direction === SortDirection.ASC ? (
                                                 <ArrowUp size={14} color={theme?.colors?.primary} />
-                                            ) : direction === 'desc' ? (
+                                            ) : direction === SortDirection.DESC ? (
                                                 <ArrowDown size={14} color={theme?.colors?.primary} />
                                             ) : (
                                                 <ArrowUpDown size={14} style={{ opacity: 1, color: theme?.colors?.muted }} />

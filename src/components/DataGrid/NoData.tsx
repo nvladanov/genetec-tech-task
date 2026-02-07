@@ -1,9 +1,10 @@
 import { Inbox, SearchX } from 'lucide-react'
 import { useTheme } from 'styled-components'
+import { NoDataType } from '../../types'
 import { NoDataContainer, NoDataMessage, NoDataTitle, PrimaryButton } from './styles'
 
 interface NoDataProps {
-    type: 'empty' | 'filtered'
+    type: NoDataType
     onClear?: () => void
 }
 
@@ -12,7 +13,7 @@ export const NoData = ({ type, onClear }: NoDataProps) => {
 
     return (
         <NoDataContainer>
-            {type === 'empty' ? (
+            {type === NoDataType.EMPTY ? (
                 <>
                     <Inbox size={48} strokeWidth={1} color={theme?.colors?.muted} style={{ marginBottom: '1rem', opacity: 0.5 }} />
                     <NoDataTitle>No Data Available</NoDataTitle>
