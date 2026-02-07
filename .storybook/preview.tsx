@@ -57,7 +57,6 @@ const preview: Preview = {
                             style={{
                                 backgroundColor: theme.colors.background,
                                 color: theme.colors.foreground,
-                                minHeight: '100vh',
                                 padding: '1rem',
                             }}
                         >

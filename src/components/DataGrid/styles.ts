@@ -14,6 +14,24 @@ export const TableContainer = styled.div`
 export const TableWrapper = styled.div`
     flex: 1;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.border};
+        border-radius: 4px;
+
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.muted};
+        }
+    }
 `;
 
 export const Table = styled.table`
@@ -91,8 +109,11 @@ export const PrimaryButton = styled.button`
 `;
 
 export const Thead = styled.thead`
-    background-color: ${({ theme }) => theme.colors.muted}08;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: ${({ theme }) => theme.colors.background};
+    box-shadow: inset 0 -1px 0 ${({ theme }) => theme.colors.border};
 `;
 
 export const Th = styled.th<{ width?: string }>`
