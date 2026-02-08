@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FormContainer = styled.form`
     display: flex;
@@ -43,7 +43,7 @@ export const Label = styled.label`
     color: ${({ theme }) => theme.colors.foreground};
 `;
 
-export const Input = styled.input<{ $hasError?: boolean }>`
+const inputStyles = css<{ $hasError?: boolean }>`
     padding: ${({ theme }) => theme.spacing.md};
     border-radius: ${({ theme }) => theme.radii.md};
     border: 1px solid ${({ theme, $hasError }) => ($hasError ? theme.colors.error : theme.colors.border)};
@@ -63,26 +63,14 @@ export const Input = styled.input<{ $hasError?: boolean }>`
     }
 `;
 
+export const Input = styled.input<{ $hasError?: boolean }>`
+    ${inputStyles}
+`;
+
 export const TextArea = styled.textarea<{ $hasError?: boolean }>`
-    padding: ${({ theme }) => theme.spacing.md};
-    border-radius: ${({ theme }) => theme.radii.md};
-    border: 1px solid ${({ theme, $hasError }) => ($hasError ? theme.colors.error : theme.colors.border)};
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.foreground};
-    font-size: ${({ theme }) => theme.typography.fontSize.md};
-    transition: all ${({ theme }) => theme.transitions.fast};
+    ${inputStyles}
     min-height: 100px;
     resize: vertical;
-
-    &:focus {
-        outline: none;
-        border-color: ${({ theme, $hasError }) => ($hasError ? theme.colors.error : theme.colors.primary)};
-        box-shadow: 0 0 0 2px ${({ theme, $hasError }) => ($hasError ? theme.colors.error : theme.colors.primary)}20;
-    }
-
-    &::placeholder {
-        color: ${({ theme }) => theme.colors.muted};
-    }
 `;
 
 export const ErrorMessage = styled.span`

@@ -192,6 +192,7 @@ export const PaginationContainer = styled.nav`
     padding: ${({ theme }) => theme.spacing.md};
     border-top: 1px solid ${({ theme }) => theme.colors.border};
     background-color: ${({ theme }) => theme.colors.background};
+    container-type: inline-size;
 `;
 
 export const PageButton = styled.button<{ $active?: boolean }>`
@@ -245,6 +246,10 @@ export const PageSelect = styled.select`
 export const PaginationInfo = styled.span`
     color: ${({ theme }) => theme.colors.muted};
     font-size: 0.875rem;
+
+    @container (max-width: 740px) {
+        display: none;
+    }
 `;
 
 export const FilterButton = styled.button<{ $active: boolean }>`

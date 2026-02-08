@@ -1,5 +1,5 @@
+import { useMemo, type ChangeEvent } from 'react';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-import type { ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
     PageButton,
@@ -10,6 +10,7 @@ import {
     PaginationInfo,
     PaginationRightSide,
 } from './styles';
+import { getPageNumbers, PAGE_SIZE_OPTIONS } from './utils';
 
 interface PaginationProps {
     page: number;
@@ -27,21 +28,7 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
         onPageSizeChange(Number(e.target.value));
     };
 
-    const getPageNumbers = () => {
-        const pages = [];
-        if (totalPages <= 7) {
-            for (let i = 1; i <= totalPages; i++) pages.push(i);
-        } else {
-            if (page <= 4) {
-                pages.push(1, 2, 3, 4, 5, '...', totalPages);
-            } else if (page >= totalPages - 3) {
-                pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
-            } else {
-                pages.push(1, '...', page - 1, page, page + 1, '...', totalPages);
-            }
-        }
-        return pages;
-    };
+    const pageNumbers = useMemo(() => getPageNumbers(page, totalPages), [page, totalPages]);
 
     return (
         <PaginationContainer>
@@ -60,10 +47,11 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
                     onChange={handlePageSizeChange}
                     aria-label={t('datagrid.pagination.rowsPerPage')}
                 >
-                    <option value={5}>5</option>
-                    <option value={10}>10</option>
-                    <option value={20}>20</option>
-                    <option value={50}>50</option>
+                    {PAGE_SIZE_OPTIONS.map((size) => (
+                        <option key={size} value={size}>
+                            {size}
+                        </option>
+                    ))}
                 </PageSelect>
 
                 <PaginationControls>
@@ -82,7 +70,7 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
                         <ChevronLeft size={16} />
                     </PageButton>
 
-                    {getPageNumbers().map((p, i) =>
+                    {pageNumbers.map((p, i) =>
                         typeof p === 'number' ? (
                             <PageButton key={i} $active={p === page} onClick={() => onPageChange(p)}>
                                 {p}
@@ -111,3 +99,4 @@ export const Pagination = ({ page, totalPages, total, pageSize, onPageChange, on
         </PaginationContainer>
     );
 };
+

@@ -24,15 +24,15 @@ interface UseEventFormProps {
     onSubmit: (values: EventFormValues) => Promise<void>;
 }
 
+const DEFAULT_VALUES: EventFormValues = {
+    title: '',
+    date: '',
+    description: '',
+};
+
 export const useEventForm = ({ initialValues, onSubmit }: UseEventFormProps) => {
     const { t } = useTranslation();
-    const [values, setValues] = useState<EventFormValues>(
-        initialValues || {
-            title: '',
-            date: '',
-            description: '',
-        }
-    );
+    const [values, setValues] = useState<EventFormValues>(initialValues ?? DEFAULT_VALUES);
     const [errors, setErrors] = useState<EventFormErrors>({});
     const [status, setStatus] = useState<SubmitStatus>(SubmitStatus.IDLE);
 
@@ -93,13 +93,7 @@ export const useEventForm = ({ initialValues, onSubmit }: UseEventFormProps) => 
     );
 
     const reset = useCallback(() => {
-        setValues(
-            initialValues || {
-                title: '',
-                date: '',
-                description: '',
-            }
-        );
+        setValues(initialValues ?? DEFAULT_VALUES);
         setErrors({});
         setStatus(SubmitStatus.IDLE);
     }, [initialValues]);

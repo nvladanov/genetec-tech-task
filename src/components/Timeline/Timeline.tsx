@@ -15,6 +15,7 @@ import {
 } from './styles';
 import { NoDataType, type Event } from '../../types';
 import { NoData } from '../Common/NoData';
+import { formatEventTime, DATE_FORMAT_OPTIONS } from './utils';
 
 interface TimelineProps {
     events: Event[];
@@ -28,6 +29,13 @@ export const Timeline = ({ events, autoFocus }: TimelineProps) => {
         groupedEvents,
         autoFocus,
     });
+
+    const getAriaLabel = (event: Event): string => {
+        const dateStr = new Date(event.date).toLocaleDateString(i18n.language, DATE_FORMAT_OPTIONS);
+        const timeStr = formatEventTime(event.date, i18n.language);
+
+        return `${event.title} on ${dateStr} at ${timeStr}`;
+    };
 
     return (
         <TimelineContainer ref={containerRef} onKeyDown={handleKeyDown} role="region" aria-label={t('timeline.ariaLabel')}>
@@ -49,18 +57,9 @@ export const Timeline = ({ events, autoFocus }: TimelineProps) => {
                                             data-group-index={groupIndex}
                                             data-item-index={itemIndex}
                                             role="article"
-                                            aria-label={`${event.title} on ${new Date(event.date).toLocaleDateString(i18n.language, {
-                                                weekday: 'long',
-                                                month: 'long',
-                                                day: 'numeric',
-                                            })} at ${new Date(event.date).toLocaleTimeString(i18n.language, { hour: '2-digit', minute: '2-digit' })}`}
+                                            aria-label={getAriaLabel(event)}
                                         >
-                                            <TimelineTime>
-                                                {new Date(event.date).toLocaleTimeString(i18n.language, {
-                                                    hour: '2-digit',
-                                                    minute: '2-digit',
-                                                })}
-                                            </TimelineTime>
+                                            <TimelineTime>{formatEventTime(event.date, i18n.language)}</TimelineTime>
                                             <TimelineTitle>{event.title}</TimelineTitle>
                                             {event.description && (
                                                 <TimelineDescription>{event.description}</TimelineDescription>
@@ -76,3 +75,4 @@ export const Timeline = ({ events, autoFocus }: TimelineProps) => {
         </TimelineContainer>
     );
 };
+

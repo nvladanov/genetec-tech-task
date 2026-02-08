@@ -1,6 +1,8 @@
 import { createContext } from 'react';
 
-type ThemeMode = 'light' | 'dark';
+export type ThemeMode = 'light' | 'dark';
+
+export const THEME_STORAGE_KEY = 'theme-mode';
 
 export interface ThemeContextValue {
     mode: ThemeMode;
@@ -8,3 +10,4 @@ export interface ThemeContextValue {
 }
 
 export const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+

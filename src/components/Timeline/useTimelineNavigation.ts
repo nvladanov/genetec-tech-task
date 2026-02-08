@@ -1,11 +1,8 @@
 import { useState, useCallback, useEffect, useRef, type KeyboardEvent } from 'react';
-import type { Event } from '../../types';
+import type { EventGroup } from './utils';
 
 interface UseTimelineNavigationProps {
-    groupedEvents: Array<{
-        date: string;
-        events: Event[];
-    }>;
+    groupedEvents: EventGroup[];
     autoFocus?: boolean;
 }
 
